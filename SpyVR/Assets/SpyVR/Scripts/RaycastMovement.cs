@@ -23,13 +23,12 @@ public class RaycastMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		Vector3 forwardDir = raycastHolder.transform.TransformDirection (Vector3.forward) * 100;
 		//Debug.DrawRay (raycastHolder.transform.position, forwardDir, Color.green);
 
 		if (Physics.Raycast (raycastHolder.transform.position, (forwardDir), out hit)) {
 
-		//	if (hit.collider.gameObject.tag == "movementCapable") {
+			if (hit.collider.gameObject.tag == "movementCapable") {
 				ManageIndicator ();
 				if (hit.distance <= maxMoveDistance) { //If we are close enough
 
@@ -37,9 +36,8 @@ public class RaycastMovement : MonoBehaviour {
 					if (raycastIndicator.activeSelf == false) {
 						raycastIndicator.SetActive (true);
 					}
-				
-
-					if (Input.GetMouseButtonDown (0)) {
+					if (Input.GetMouseButtonDown(0)) {
+						Debug.Log("Yes");
 						if (teleport) {
 							teleportMove (hit.point);
 						} else {
@@ -51,7 +49,7 @@ public class RaycastMovement : MonoBehaviour {
 						raycastIndicator.SetActive (false);
 					}
 				}
-			//}
+			}
 				
 		}
 	
