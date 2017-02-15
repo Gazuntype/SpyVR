@@ -27,7 +27,6 @@ public class RaycastMovement : MonoBehaviour {
 		//Debug.DrawRay (raycastHolder.transform.position, forwardDir, Color.green);
 
 		if (Physics.Raycast (raycastHolder.transform.position, (forwardDir), out hit)) {
-
 			if (hit.collider.gameObject.tag == "movementCapable") {
 				ManageIndicator ();
 				if (hit.distance <= maxMoveDistance) { //If we are close enough
@@ -37,7 +36,6 @@ public class RaycastMovement : MonoBehaviour {
 						raycastIndicator.SetActive (true);
 					}
 					if (Input.GetMouseButtonDown(0)) {
-						Debug.Log("Yes");
 						if (teleport) {
 							teleportMove (hit.point);
 						} else {
