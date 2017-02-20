@@ -6,7 +6,7 @@ public class RobotControl : MonoBehaviour {
 	public Transform[] destination;
 
 	[HideInInspector]
-	public static bool isChosen;
+	public static bool[] isChosen;
 
 	bool isStationary = true;
 	NavMeshAgent robotAgent;
