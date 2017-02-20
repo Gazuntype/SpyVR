@@ -5,6 +5,9 @@ using System.Collections;
 public class RobotControl : MonoBehaviour {
 	public Transform[] destination;
 
+	[HideInInspector]
+	public static bool isChosen;
+
 	bool isStationary = true;
 	NavMeshAgent robotAgent;
 	// Use this for initialization
