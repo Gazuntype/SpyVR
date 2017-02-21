@@ -5,11 +5,9 @@ using System.Collections;
 public class RobotControl : MonoBehaviour {
 	public Transform[] destination;
 
-	[HideInInspector]
-	public static bool[] isChosen;
-
 	bool isStationary = true;
 	NavMeshAgent robotAgent;
+
 	// Use this for initialization
 	void Start () {
 		robotAgent = GetComponent<NavMeshAgent>();
@@ -37,7 +35,6 @@ public class RobotControl : MonoBehaviour {
 	List<float> GetClosestDestinations()
 	{
 		List<float> ClosestDestinations = new List<float>();
-
 		foreach (Transform individualDestination in destination)
 		{
 			ClosestDestinations.Add(Vector3.Distance(transform.position, individualDestination.position));
