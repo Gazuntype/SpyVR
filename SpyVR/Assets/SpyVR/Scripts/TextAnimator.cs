@@ -23,18 +23,19 @@ public class TextAnimator : MonoBehaviour {
 
 	void Start () {
 		delayComplete = false;
+		StartCoroutine(AnimateText());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (initialDelay > 0 && !delayComplete)
+		/*if (initialDelay > 0 && !delayComplete)
 		{
 			initialDelay -= Time.deltaTime;
 		}
 		else {
 			StartCoroutine(AnimateText());
 			delayComplete = true;
-		}
+		}*/
 	}
 
 	IEnumerator AnimateText()
