@@ -3,8 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIControl : MonoBehaviour {
+	public GameObject canvas;
 	public Material glowMaterial;
 	public Image backgroundImage;
+	public Text body;
+	public Text header;
+	public Image image;
 
 	Color glowColor;
 	// Use this for initialization
@@ -17,5 +21,16 @@ public class UIControl : MonoBehaviour {
 		glowColor = glowMaterial.GetColor("_EmissionColor");
 		glowColor.a = 0.5f;
 		backgroundImage.color = glowColor;
+		if (Input.GetMouseButtonDown(0))
+		{
+			SwitchToInstructins();
+		}
+	}
+
+	public void SwitchToInstructins()
+	{
+		body.gameObject.SetActive(false);
+		header.gameObject.SetActive(true);
+		image.gameObject.SetActive(true);
 	}
 }

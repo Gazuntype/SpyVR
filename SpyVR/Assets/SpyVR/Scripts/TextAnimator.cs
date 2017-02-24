@@ -18,11 +18,11 @@ public class TextAnimator : MonoBehaviour {
 	[Tooltip("The string that should be animated")]
 	public string text;
 
-	bool delayComplete;
+	//bool delayComplete;
 	// Use this for initialization
 
 	void Start () {
-		delayComplete = false;
+		//delayComplete = false;
 		StartCoroutine(AnimateText());
 	}
 	
