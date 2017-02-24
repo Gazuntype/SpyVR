@@ -21,7 +21,7 @@ public class UIControl : MonoBehaviour {
 		glowColor = glowMaterial.GetColor("_EmissionColor");
 		glowColor.a = 0.5f;
 		backgroundImage.color = glowColor;
-		if (Input.GetMouseButtonDown(0))
+		if (TextAnimator.animationComplete && Input.GetMouseButtonDown(0))
 		{
 			SwitchToInstructins();
 		}

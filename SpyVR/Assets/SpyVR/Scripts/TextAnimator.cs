@@ -4,6 +4,9 @@ using System.Collections;
 
 public class TextAnimator : MonoBehaviour {
 
+	[HideInInspector]
+	public static bool animationComplete;
+
 	[Tooltip("Total time of the animation.")]
 	public float animationTime;
 
@@ -40,6 +43,7 @@ public class TextAnimator : MonoBehaviour {
 
 	IEnumerator AnimateText()
 	{
+		animationComplete = false;
 		for (int i = 0; i < text.Length; i++)
 		{
 			if (i == 0)
@@ -51,5 +55,6 @@ public class TextAnimator : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(animationTime / text.Length);
 		}
+		animationComplete = true;
 	}
 }
