@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/SpyVR/Scenes/main.unity
+- path: Assets/SpyVR/Scenes/titleScreen.unity
   isLoaded: 1
   isActive: 1
