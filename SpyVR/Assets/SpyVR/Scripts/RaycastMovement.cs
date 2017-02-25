@@ -71,7 +71,6 @@ public class RaycastMovement : MonoBehaviour {
 	}
 	public void DashMove(Vector3 location) {
 		moving = true;
-
 		iTween.MoveTo (player, 
 			iTween.Hash (
 				"position", new Vector3 (location.x, location.y + height, location.z), 
