@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class UIControl : MonoBehaviour {
@@ -43,5 +44,10 @@ public class UIControl : MonoBehaviour {
 		footer.gameObject.SetActive(true);
 		image.gameObject.SetActive(true);
 		introComplete = true;
+	}
+
+	public void GoToNextScene()
+	{
+		SceneManager.LoadScene("main");
 	}
 }
