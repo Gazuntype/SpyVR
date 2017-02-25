@@ -27,7 +27,7 @@ public class RaycastMovement : MonoBehaviour {
 		//Debug.DrawRay (raycastHolder.transform.position, forwardDir, Color.green);
 
 		if (Physics.Raycast (raycastHolder.transform.position, (forwardDir), out hit)) {
-			if (hit.collider.gameObject.tag == "movementCapable") {
+			if (hit.collider.gameObject.tag == "movementCapable" && UIControl.introComplete) {
 				ManageIndicator ();
 				if (hit.distance <= maxMoveDistance) { //If we are close enough
 

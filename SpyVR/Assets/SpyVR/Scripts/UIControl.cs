@@ -10,6 +10,9 @@ public class UIControl : MonoBehaviour {
 	public Text header;
 	public Image image;
 
+	[HideInInspector]
+	public static bool introComplete;
+
 	Color glowColor;
 	// Use this for initialization
 	void Start () {
@@ -32,5 +35,6 @@ public class UIControl : MonoBehaviour {
 		body.gameObject.SetActive(false);
 		header.gameObject.SetActive(true);
 		image.gameObject.SetActive(true);
+		introComplete = true;
 	}
 }
