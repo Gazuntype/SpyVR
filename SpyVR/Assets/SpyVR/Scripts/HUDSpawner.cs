@@ -10,10 +10,12 @@ public class HUDSpawner : MonoBehaviour {
 	[HideInInspector]
 	public static bool oneClick;
 
+	public GameObject HUD;
+
+
 	float initTime;
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -49,7 +51,7 @@ public class HUDSpawner : MonoBehaviour {
 	{
 		if (DoubleClick())
 		{
-			Debug.Log("Double clicked");
+			HUD.SetActive(true);
 		}
 	}
 }
