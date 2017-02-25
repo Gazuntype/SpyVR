@@ -10,6 +10,9 @@ public class RaycastMovement : MonoBehaviour {
 	public bool teleport = true;
 
 	public float maxMoveDistance = 10;
+
+	[HideInInspector]
+	public static bool moveBegin;
 	
 	private bool moving = false;
 
@@ -40,6 +43,7 @@ public class RaycastMovement : MonoBehaviour {
 							teleportMove (hit.point);
 						} else {
 							DashMove (hit.point);
+							moveBegin = true;
 						}
 					}
 				} else {

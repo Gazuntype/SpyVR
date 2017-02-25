@@ -8,6 +8,7 @@ public class UIControl : MonoBehaviour {
 	public Image backgroundImage;
 	public Text body;
 	public Text header;
+	public Text footer;
 	public Image image;
 
 	[HideInInspector]
@@ -28,12 +29,18 @@ public class UIControl : MonoBehaviour {
 		{
 			SwitchToInstructins();
 		}
+
+		if (RaycastMovement.moveBegin && canvas.activeSelf == true)
+		{
+			canvas.SetActive(false);
+		}
 	}
 
 	public void SwitchToInstructins()
 	{
 		body.gameObject.SetActive(false);
 		header.gameObject.SetActive(true);
+		footer.gameObject.SetActive(true);
 		image.gameObject.SetActive(true);
 		introComplete = true;
 	}
