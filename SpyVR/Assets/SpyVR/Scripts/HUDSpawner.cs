@@ -5,9 +5,11 @@ public class HUDSpawner : MonoBehaviour {
 
 	[Tooltip("The maximum allowable delay between two clicks")]
 	[Range(0, 1f)]
-	public float doubleClickDelay = 0.2f;
+	public static float doubleClickDelay = 0.2f;
 
-	bool oneClick;
+	[HideInInspector]
+	public static bool oneClick;
+
 	float initTime;
 	// Use this for initialization
 	void Start () {
