@@ -18,6 +18,8 @@ public class RobotControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		StartCoroutine(DetectPlayer());
+		RobotReaction();
 		if (isStationary)
 		{
 			Vector3 chosenDestination;
@@ -73,18 +75,20 @@ public class RobotControl : MonoBehaviour {
 	{
 		float distanceToPlayer;
 		distanceToPlayer = Vector3.Distance(transform.position, player.position);
-		if (distanceToPlayer > 3)
+		if (distanceToPlayer > 5)
 		{
 			varyingDistance = VaryingDistances.ignoring;
 		}
-		else if (distanceToPlayer < 3 && distanceToPlayer > 2)
+		else if (distanceToPlayer < 5 && distanceToPlayer > 3)
 		{
 			varyingDistance = VaryingDistances.looking;
 		}
 		else if (distanceToPlayer < 2)
 		{
 			varyingDistance = VaryingDistances.following;
+			Debug.Log(varyingDistance.ToString());
 		}
+
 		yield return new WaitForSeconds(0.2f);
 	}
 
@@ -96,11 +100,10 @@ public class RobotControl : MonoBehaviour {
 				float angle;
 				Vector3 target;
 				target = new Vector3(player.position.x, transform.position.y, player.position.z);
-				angle = AngleCalculation();
+				angle = AngleCalculation(target);
 				if (angle < 60)
 				{
 					Debug.Log("I am close to catching you");
-					Debug.Log(angle);
 				}
 				break;
 			case VaryingDistances.following:
@@ -108,11 +111,11 @@ public class RobotControl : MonoBehaviour {
 		}
 	}
 
-	float AngleCalculation()
+	float AngleCalculation(Vector3 target)
 	{
 		Vector3 displacement;
 		float angle;
-		displacement = player.position - transform.position;
+		displacement = target - transform.position;
 		angle = Vector3.Angle(transform.forward, displacement);
 		return angle;
 	}
