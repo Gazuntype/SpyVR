@@ -4,9 +4,12 @@ using System.Collections;
 
 public class RobotControl : MonoBehaviour {
 	public Transform[] destination;
+	public Transform player;
 
+	enum VaryingDistances { ignoring, looking, following }
 	bool isStationary = true;
 	NavMeshAgent robotAgent;
+	VaryingDistances varyingDistance;
 
 	// Use this for initialization
 	void Start () {
@@ -64,5 +67,53 @@ public class RobotControl : MonoBehaviour {
 			}
 		}
 		return chosenDestination;
+	}
+
+	IEnumerator DetectPlayer()
+	{
+		float distanceToPlayer;
+		distanceToPlayer = Vector3.Distance(transform.position, player.position);
+		if (distanceToPlayer > 3)
+		{
+			varyingDistance = VaryingDistances.ignoring;
+		}
+		else if (distanceToPlayer < 3 && distanceToPlayer > 2)
+		{
+			varyingDistance = VaryingDistances.looking;
+		}
+		else if (distanceToPlayer < 2)
+		{
+			varyingDistance = VaryingDistances.following;
+		}
+		yield return new WaitForSeconds(0.2f);
+	}
+
+	void RobotReaction()
+	{
+		switch (varyingDistance)
+		{
+			case VaryingDistances.looking:
+				float angle;
+				Vector3 target;
+				target = new Vector3(player.position.x, transform.position.y, player.position.z);
+				angle = AngleCalculation();
+				if (angle < 60)
+				{
+					Debug.Log("I am close to catching you");
+					Debug.Log(angle);
+				}
+				break;
+			case VaryingDistances.following:
+				break;
+		}
+	}
+
+	float AngleCalculation()
+	{
+		Vector3 displacement;
+		float angle;
+		displacement = player.position - transform.position;
+		angle = Vector3.Angle(transform.forward, displacement);
+		return angle;
 	}
 }
