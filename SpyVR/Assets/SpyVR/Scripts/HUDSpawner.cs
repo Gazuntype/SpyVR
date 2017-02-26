@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HUDSpawner : MonoBehaviour {
 
@@ -11,8 +12,10 @@ public class HUDSpawner : MonoBehaviour {
 	public static bool oneClick;
 
 	public GameObject HUD;
+	public Material glowMaterial;
+	public Image backgroundImage;
 
-
+	Color glowColor;
 	float initTime;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +23,10 @@ public class HUDSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		glowColor = glowMaterial.GetColor("_EmissionColor");
+		glowColor.a = 0.5f;
+		backgroundImage.color = glowColor;
+		HUD.transform.position = transform.position + new Vector3(0, 0, 1.37f);
 		SpawnHUD();
 	}
 
@@ -51,7 +58,14 @@ public class HUDSpawner : MonoBehaviour {
 	{
 		if (DoubleClick())
 		{
-			HUD.SetActive(true);
+			if (HUD.activeSelf == false)
+			{
+				HUD.SetActive(true);
+			}
+			else if(HUD.activeSelf == true)
+			{
+				HUD.SetActive(false);
+			}
 		}
 	}
 }
