@@ -83,7 +83,7 @@ public class RobotControl : MonoBehaviour {
 		{
 			varyingDistance = VaryingDistances.looking;
 		}
-		else if (distanceToPlayer < 2)
+		else if (distanceToPlayer < 3)
 		{
 			varyingDistance = VaryingDistances.following;
 			Debug.Log(varyingDistance.ToString());
@@ -103,7 +103,8 @@ public class RobotControl : MonoBehaviour {
 				angle = AngleCalculation(target);
 				if (angle < 60)
 				{
-					Debug.Log("I am close to catching you");
+					Debug.Log("I'm looking");
+					transform.LookAt(target);
 				}
 				break;
 			case VaryingDistances.following:
