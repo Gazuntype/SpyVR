@@ -34,7 +34,7 @@ public class RaycastMovement : MonoBehaviour
 
 		if (Physics.Raycast(raycastHolder.transform.position, (forwardDir), out hit))
 		{
-			if (hit.collider.gameObject.tag == "movementCapable" && UIControl.introComplete)
+			if (hit.collider.gameObject.tag == "movementCapable" && UIControl.introComplete && !HUDSpawner.isPaused)
 			{
 				ManageIndicator();
 				if (hit.distance <= maxMoveDistance)

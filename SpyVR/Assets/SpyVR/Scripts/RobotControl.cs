@@ -38,6 +38,16 @@ public class RobotControl : MonoBehaviour {
 		{
 			isStationary = true;
 		}
+
+		if (HUDSpawner.isPaused)
+		{
+			robotAgent.speed = 0;
+			robotAgent.angularSpeed = 0;
+		}
+		else {
+			robotAgent.speed = 1;
+			robotAgent.angularSpeed = 240;
+		}
 	}
 
 	List<float> GetClosestDestinations()

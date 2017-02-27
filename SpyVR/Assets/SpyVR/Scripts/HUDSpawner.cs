@@ -11,6 +11,9 @@ public class HUDSpawner : MonoBehaviour {
 	[HideInInspector]
 	public static bool oneClick;
 
+	[HideInInspector]
+	public static bool isPaused;
+
 	public GameObject HUD;
 	public Material glowMaterial;
 	public Image backgroundImage;
@@ -61,11 +64,19 @@ public class HUDSpawner : MonoBehaviour {
 			if (HUD.activeSelf == false)
 			{
 				HUD.SetActive(true);
+				isPaused = true;
 			}
 			else if(HUD.activeSelf == true)
 			{
 				HUD.SetActive(false);
+				isPaused = false;
 			}
 		}
+	}
+
+	public void Play()
+	{
+		HUD.SetActive(false);
+		isPaused = false;
 	}
 }
