@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class HUDControl : MonoBehaviour {
@@ -36,5 +37,10 @@ public class HUDControl : MonoBehaviour {
 			sound.Play();
 			soundImage.sprite = soundOn;
 		}
+	}
+
+	public void PlayGame()
+	{
+		SceneManager.LoadScene("title");
 	}
 }
