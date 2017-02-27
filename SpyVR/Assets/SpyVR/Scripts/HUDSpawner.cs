@@ -60,10 +60,12 @@ public class HUDSpawner : MonoBehaviour {
 		{
 			if (HUD.activeSelf == false)
 			{
+				Time.timeScale = 0;
 				HUD.SetActive(true);
 			}
 			else if(HUD.activeSelf == true)
 			{
+				Time.timeScale = 1;
 				HUD.SetActive(false);
 			}
 		}
