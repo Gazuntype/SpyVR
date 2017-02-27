@@ -4,8 +4,10 @@ using System.Collections;
 
 public class RobotControl : MonoBehaviour {
 	public Transform[] destination;
-	public Transform player;
+	public GameObject player;
+	public Transform robotHead;
 
+	RaycastHit rayHit;
 	enum VaryingDistances { ignoring, looking, following }
 	bool isStationary = true;
 	NavMeshAgent robotAgent;
@@ -19,6 +21,7 @@ public class RobotControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		StartCoroutine(DetectPlayer());
+		FindTarget();
 		RobotReaction();
 		if (isStationary)
 		{
@@ -71,15 +74,27 @@ public class RobotControl : MonoBehaviour {
 		return chosenDestination;
 	}
 
+	void FindTarget()
+	{
+		Debug.DrawRay(transform.position + new Vector3(0, 2, 0), transform.forward * 5, Color.green, 1);
+		if (Physics.Raycast(robotHead.position, transform.forward, out rayHit, 7f))
+		{
+			if (rayHit.collider.gameObject == player)
+			{
+				Debug.Log("I have seen the player");
+			}
+		}
+	}
+
 	IEnumerator DetectPlayer()
 	{
 		float distanceToPlayer;
-		distanceToPlayer = Vector3.Distance(transform.position, player.position);
-		if (distanceToPlayer > 5)
+		distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+		if (distanceToPlayer > 6)
 		{
 			varyingDistance = VaryingDistances.ignoring;
 		}
-		else if (distanceToPlayer < 5 && distanceToPlayer > 3)
+		else if (distanceToPlayer < 6 && distanceToPlayer > 3)
 		{
 			varyingDistance = VaryingDistances.looking;
 		}
@@ -94,20 +109,21 @@ public class RobotControl : MonoBehaviour {
 
 	void RobotReaction()
 	{
+		Vector3 target;
+		target = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
 		switch (varyingDistance)
 		{
 			case VaryingDistances.looking:
 				float angle;
-				Vector3 target;
-				target = new Vector3(player.position.x, transform.position.y, player.position.z);
 				angle = AngleCalculation(target);
 				if (angle < 60)
 				{
-					Debug.Log("I'm looking");
 					transform.LookAt(target);
 				}
 				break;
 			case VaryingDistances.following:
+
+				transform.LookAt(target);
 				break;
 		}
 	}
