@@ -39,6 +39,16 @@ public class HUDControl : MonoBehaviour {
 		}
 	}
 
+	public void GoToMainMenu()
+	{
+		SceneManager.LoadScene("mainMenu");
+	}
+
+	public void EndGame()
+	{
+		Application.Quit();
+	}
+
 	public void PlayGame()
 	{
 		SceneManager.LoadScene("title");
