@@ -24,17 +24,19 @@ public class DescriptionControl : MonoBehaviour {
 
 	public void StartText()
 	{
+		text = this.gameObject.name;
 		StartCoroutine(AnimateText());
 	}
 
 	public void EndText()
 	{
+		text = "";
 		textComponent.text = "";
 	}
 
 	void Start()
 	{
-		text = this.gameObject.name;
+		
 	}
 
 	// Update is called once per frame

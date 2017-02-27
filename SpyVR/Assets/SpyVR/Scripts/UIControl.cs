@@ -45,9 +45,4 @@ public class UIControl : MonoBehaviour {
 		image.gameObject.SetActive(true);
 		introComplete = true;
 	}
-
-	public void GoToNextScene()
-	{
-		SceneManager.LoadScene("main");
-	}
 }
