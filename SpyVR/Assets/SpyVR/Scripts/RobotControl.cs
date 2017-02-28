@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -91,9 +92,18 @@ public class RobotControl : MonoBehaviour {
 		{
 			if (rayHit.collider.gameObject == player)
 			{
-				Debug.Log("I have seen the player");
+				StartCoroutine(GameOver());
 			}
 		}
+	}
+
+	IEnumerator GameOver()
+	{
+		GvrAudioSource audio = GetComponent<GvrAudioSource>();
+		audio.Play();
+		player.transform.LookAt(transform);
+		yield return new WaitForSeconds(2);
+		SceneManager.LoadScene("GameOver");
 	}
 
 	IEnumerator DetectPlayer()
