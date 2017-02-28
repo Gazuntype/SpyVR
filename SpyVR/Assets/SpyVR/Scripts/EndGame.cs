@@ -28,7 +28,7 @@ public class EndGame : MonoBehaviour {
 	{
 		if (Vector3.Distance(transform.position, player.transform.position) < 4)
 		{
-			SceneManager.LoadScene("gameOver");
+			SceneManager.LoadScene("GameOver");
 			completed = true;
 		}
 	}

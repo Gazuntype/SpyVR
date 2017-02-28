@@ -86,7 +86,7 @@ public class RobotControl : MonoBehaviour {
 
 	void FindTarget()
 	{
-		Debug.DrawRay(transform.position + new Vector3(0, 2, 0), transform.forward * 5, Color.green, 1);
+		Debug.DrawRay(transform.position + new Vector3(0, 2, 0), transform.forward * 8, Color.green, 1);
 		if (Physics.Raycast(robotHead.position, transform.forward, out rayHit, 7f))
 		{
 			if (rayHit.collider.gameObject == player)
@@ -100,15 +100,15 @@ public class RobotControl : MonoBehaviour {
 	{
 		float distanceToPlayer;
 		distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-		if (distanceToPlayer > 6)
+		if (distanceToPlayer > 7)
 		{
 			varyingDistance = VaryingDistances.ignoring;
 		}
-		else if (distanceToPlayer < 6 && distanceToPlayer > 3)
+		else if (distanceToPlayer < 7 && distanceToPlayer > 5)
 		{
 			varyingDistance = VaryingDistances.looking;
 		}
-		else if (distanceToPlayer < 3)
+		else if (distanceToPlayer < 5)
 		{
 			varyingDistance = VaryingDistances.following;
 			Debug.Log(varyingDistance.ToString());
