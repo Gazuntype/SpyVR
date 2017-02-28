@@ -16,7 +16,7 @@ public class DoorControl : MonoBehaviour {
 
 	public void GoToNextScene()
 	{
-		if (Vector3.Distance(player.transform.position, transform.position) < 2)
+		if (Vector3.Distance(player.transform.position, transform.position) < 4)
 		{
 			SceneManager.LoadScene("main");
 		}

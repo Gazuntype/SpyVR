@@ -53,4 +53,9 @@ public class HUDControl : MonoBehaviour {
 	{
 		SceneManager.LoadScene("title");
 	}
+
+	public void RestartGame()
+	{
+		SceneManager.LoadScene("main");
+	}
 }
