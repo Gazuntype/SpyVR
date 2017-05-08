@@ -11,12 +11,12 @@ public class RobotControl : MonoBehaviour {
 	RaycastHit rayHit;
 	enum VaryingDistances { ignoring, looking, following }
 	bool isStationary = true;
-	NavMeshAgent robotAgent;
+	UnityEngine.AI.NavMeshAgent robotAgent;
 	VaryingDistances varyingDistance;
 
 	// Use this for initialization
 	void Start () {
-		robotAgent = GetComponent<NavMeshAgent>();
+		robotAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 	}
 	
 	// Update is called once per frame
